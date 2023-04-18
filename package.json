@@ -1,5 +1,27 @@
 {
   "dependencies": {
-    "moment": "^2.29.4"
-  }
+    "moment": "^2.29.4",
+    "multer": "^1.4.5-lts.1"
+  },
+  "name": "node.js-practic",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IrynkaKol/node.js-practic.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IrynkaKol/node.js-practic/issues"
+  },
+  "homepage": "https://github.com/IrynkaKol/node.js-practic#readme",
+  "description": ""
 }
