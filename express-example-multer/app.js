@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const multer = require('multer');
-const path = require('./temp');
+const path = require('path');
+const fs = require("fs").promises;
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 
 // створюємо об'єкт налаштувань multer
 const tempDir = path.join(__dirname, "temp")
+
 const multerConfig = multer.diskStorage({
     destination: tempDir, // вказуємо шлях до тимчасової папки
     filename: (req, file, cb) => {
@@ -29,9 +31,14 @@ app.get('/api/books', (req, res) => {
     res.json(books)
 });
 
+// якщо очікуємо декілька файлів то пишемо upload.array('cover', 9) 9 -кількість файлів
+// якщо очікуємо завантаження декількох полів в декількох файлах upload.fields([{name: "cover", maxCount: 2}, {name: "subcover", maxCount: 2}])
+// maxCount - максимальна кількість файлів
+
 app.post('/api/books', upload.single('cover'), async (req, res) => {
-console.log(req.body);
-console.log(req.file)
+    await fs.rename('./temp/avatar.jpg', './public/books/avatar.jpg')
+// console.log(req.body);
+// console.log(req.file)
 }) // візьми з поля cover збережи папку в temp, а текстові поля передай в req.body 
 
 app.listen(3000)
