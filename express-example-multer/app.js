@@ -37,6 +37,7 @@ app.get("/api/books", (req, res) => {
 // maxCount - максимальна кількість файлів
 
 const booksDir = path.join(__dirname, "public", "books");
+
 app.post("/api/books", upload.single("cover"), async (req, res) => {
   const { path: tempUpload, originalname } = req.file; // з req.file беремо шлях до файлу і і'мя файлу
   const resultUpload = path.join(booksDir, originalname);
