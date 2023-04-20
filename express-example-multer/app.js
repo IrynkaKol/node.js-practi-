@@ -10,6 +10,7 @@ const app = express();
 // створюємо мідлвари
 app.use(cors());
 app.use(express.json());
+app.use(express.static("public")) // налаштування Express на роздачу статичних файлів із папки public (якщо прийде запит на статичний файл, то треба читиати з папки public)
 
 // створюємо об'єкт налаштувань multer
 const tempDir = path.join(__dirname, "temp");
@@ -42,8 +43,8 @@ app.post("/api/books", upload.single("cover"), async (req, res) => {
   const { path: tempUpload, originalname } = req.file; // з req.file беремо шлях до файлу і і'мя файлу
   const resultUpload = path.join(booksDir, originalname);
   await fs.rename(tempUpload, resultUpload); // переносить файл із папки temp в папку books
-  // await fs.rename('./temp/avatar.jpg', './public/books/avatar.jpg')
-  const cover = path.join("public", "books", originalname); // відносно сервера
+  // await fs.rename('./temp/avatar.jpg', './public/books/avatar.jpg') tempUpload - старий шлях із папки temp
+  const cover = path.join("books", originalname); // відносно сервера
   const newBook = {
     id: v4(),
     ...req.body,
