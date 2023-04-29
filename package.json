@@ -1,7 +1,8 @@
 {
   "dependencies": {
     "moment": "^2.29.4",
-    "multer": "^1.4.5-lts.1"
+    "multer": "^1.4.5-lts.1",
+    "y": "^0.3.2"
   },
   "name": "node.js-practic",
   "version": "1.0.0",
