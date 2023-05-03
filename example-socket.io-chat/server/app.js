@@ -14,4 +14,4 @@ io.on("connection", (socket) => {
     console.log("New frontend connect")
 })
 
-httpServer.listen(3001);
+httpServer.listen(3000);
