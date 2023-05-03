@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      const ws = new WebSocket("ws://localhost:5000"); // підключаємось до WebSocket
+
+      ws.onopen = () => {
+        // щоб прийняти повідомлення від бекенду на фронтенді
+        // console.log("Success connect");
+      }; // спрацює, коли успішно підключиться до WebSocket серверу
+      ws.onmessage = (e) => {
+        console.log(e.data);
+      }; // спрацовує кожний рах, коли юекенд рийняв повідомлення
+    </script>
+  </body>
+</html>
