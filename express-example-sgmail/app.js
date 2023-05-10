@@ -1,16 +1,19 @@
-const sgMail = require('@sendgrid/mail');
 require("dotenv").config();
+const sgMail = require('@sendgrid/mail');
+
 
 const {SENDGRID_API_KEY} = process.env;
 
 sgMail.setApiKey(SENDGRID_API_KEY);
 
 const email = {
-    to: "kolomoyka@meta.ua",
-    from: "kolomoyka@gmail.com",
+    to: "ticamis978@pixiil.com",
+    from: "kolomoyka@meta.ua",
     subject: "test",
-    html: "<p>C Сайта пришла новая заявка</p>"
+    text: "Hello word",
+    html: "<p>C cайта пришла новая заявка</p>"
 }
 sgMail.send(email)
-.then (() => {console.log("Email send success")})
+.then ((res) => {console.log(res)})
+// .then (() => {console.log("Email send success")})
 .catch(error => console.log(error.message))
